@@ -87,4 +87,24 @@ export default function VoteResultView({ room, me, roomCode, L, isRTL }) {
           </div>
           <div className="grid grid-cols-3 gap-2">
             {aliveAfter.map(p => (
-              <div key={p.id} className="py-2 bg-white/5 rounded text-white/80 text-sm">{
+              <div key={p.id} className="py-2 bg-white/5 rounded text-white/80 text-sm">{p.name}</div>
+            ))}
+          </div>
+        </div>
+        
+        {isHost ? (
+          <button
+            onClick={() => continueAfterVoteResult(roomCode)}
+            className="w-full py-4 bg-gradient-to-r from-violet-900 to-purple-900 border border-violet-500/40 rounded-lg text-white text-xl tracking-wide hover:from-violet-800 transition-all"
+          >
+            {L.nightFalls} →
+          </button>
+        ) : (
+          <div className="py-3 bg-black/40 border border-white/10 rounded text-white/40 text-sm italic">
+            {isRTL ? 'المضيف يبدأ الليلة التالية' : 'Host will start next night'}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
